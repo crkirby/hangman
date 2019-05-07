@@ -1,0 +1,35 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size:100%; 
+  color:whitesmoke;
+  background-image: url('./assets/chalkboard.jpg');
+}
+.grid2x2 {
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.grid2x2 > div {
+  display: flex; 
+  flex-basis: calc(50% - 45px);  
+  flex-direction: column;
+}
+.grid2x2 > div > div {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+}
+
+#category {
+  padding: 15px;
+}
+
+.box { margin: 20px; }
+.box1 { background-size: 100%;}
+.box2 { flex-wrap: wrap; font-size: 80px; letter-spacing: 1.2px; }
+.box3 { height: 25vh; }
+.box4 { margin-bottom: 40px; color:whitesmoke; text-align: center; }
