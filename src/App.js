@@ -26,17 +26,13 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('keyup', ({ key }) => {
-      if (this.state.availableLetters.includes(key.toUpperCase())) {
-        this.updateByKey(key)
-      }
-    })
+    document.body.addEventListener('keyup', this.handleKeyUp)
   }
-
+  
   componentWillUnmount() {
-    window.removeEventListener('keyup')
+    document.body.removeEventListener('keyup', this.handleKeyUp)
   }
-
+  
   countOccurences = (word, ch) => {
     const occurences = []
     word.forEach((letter, index) => {
@@ -46,10 +42,14 @@ export default class App extends React.Component {
     })
     return occurences
   }
-
-  isGameOver = () => {
-    return this.state.hiddenWord.join('').toUpperCase() === this.state.word.toUpperCase() || this.state.wrongAttempts === 6
+  
+  handleKeyUp = ({ key }) => {
+    if (this.state.availableLetters.includes(key.toUpperCase())) {
+      this.updateByKey(key)
+    }
   }
+
+  isGameOver = () => this.state.hiddenWord.join('').toUpperCase() === this.state.word.toUpperCase() || this.state.wrongAttempts === 6
 
   updateByKey = key => {
     if(!this.isGameOver()){
